@@ -95,7 +95,7 @@ class VideoUtilsTwigExtension extends AbstractExtension
 
     public function getYoutubeId($url = null): string
     {
-        if (preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user|shorts)\/))([^\?&\"'>]+)/", $url, $result)){
+        if (preg_match("/^(?:(?:https?:)?\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user|shorts)\/))([^\?&\"'>]+)/", $url, $result)){
             return $result[1];
         }
         return '';
@@ -103,8 +103,8 @@ class VideoUtilsTwigExtension extends AbstractExtension
 
     public function getVimeoId($url = null): string
     {
-        if(preg_match("/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/", $url, $output_array)) {
-            return $output_array[6];
+        if(preg_match("/((https?:)?\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/", $url, $output_array)) {
+            return $output_array[7];
         }
         return '';
     }
